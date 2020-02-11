@@ -52,8 +52,8 @@ for var in ${install[@]};
 do
   echo "wating..."
   if test $var = "percol"; then
-    cd percol_master
-    python setup.py install 
+    cd percol-master
+    python setup.py install &>/dev/null
     install_result $var $? 
   elif test $var = "pm2"; then
     npm install -g pm2 &>/dev/null
