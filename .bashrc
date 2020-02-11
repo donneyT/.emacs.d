@@ -28,10 +28,10 @@ sbs(){ du -b --max-depth 1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", 
 alias intercept="sudo strace -ff -e trace=write -e write=1,2 -p"
 alias meminfo='free -m -l -t'
 alias psgrep="ps aux | grep"
-alias ps?="pgrep"
+alias ps?="ppgrep"
 
 #Network
-alias listen="lsof -P -i -n"
+alias listen='_listen(){ lsof -P -i -n | percol --query $1; };_listen'
 alias port='_port(){ lsof -nP -iTCP:"$1" -sTCP:LISTEN; };_port'
 alias ipinfo="curl ifconfig.me"
 
@@ -159,7 +159,7 @@ function ppgrep() {
     ps aux | eval $PERCOL | awk '{ print $2 }'
 }
 
-function ppkill() {
+function pkill() {
     if [[ $1 =~ ^- ]]; then
         QUERY=""            # options only
     else
