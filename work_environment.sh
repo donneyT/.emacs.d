@@ -57,6 +57,7 @@ do
   echo "wating..."
   if test $var = "percol"; then
     cp percol /usr/bin
+    cp -R dpercol /usr/bin
     install_result $var $? 
   elif test $var = "pm2"; then
     npm install -g pm2 &>/dev/null
