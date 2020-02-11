@@ -31,7 +31,14 @@ alias psgrep="ps aux | grep"
 alias ps?="ppgrep"
 
 #Network
-alias listen='_listen(){ lsof -P -i -n | percol --query $1; };_listen'
+function listen() {
+    if [[ $1 == "" ]]; then
+        PERCOL=percol
+    else
+        PERCOL="percol --query $1"
+    fi
+    lsof -P -i -n | eval $PERCOL
+}
 alias port='_port(){ lsof -nP -iTCP:"$1" -sTCP:LISTEN; };_port'
 alias ipinfo="curl ifconfig.me"
 
