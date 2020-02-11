@@ -4,11 +4,11 @@ git git
 the_silver_searcher ag
 nodejs node
 pm2 pm2
+python python
 percol percol
 w3m w3m
 redis redis-server 
 lua lua 
-python python 
 )
 install=()
 
@@ -38,10 +38,6 @@ function copy_result() {
 }
 
 
-
-
-
-
 echo "+===================================+"
 echo "|start ... checking work environment|"
 echo "+===================================+"
@@ -56,8 +52,8 @@ for var in ${install[@]};
 do
   echo "wating..."
   if test $var = "percol"; then
-    cp percol /usr/bin
-    cp -R dpercol /usr/bin
+    cd percol_master
+    python setup.py install 
     install_result $var $? 
   elif test $var = "pm2"; then
     npm install -g pm2 &>/dev/null
@@ -77,6 +73,6 @@ cp .bashrc{,.bak}
 cd $dir
 cp .bashrc ~/ && source ~/.bashrc
 copy_result .bashrc $?
-cp -R .percol.d ~/
+cp -R percol-master/.percol.d ~/
 copy_result .percol.d $?
 #todo
