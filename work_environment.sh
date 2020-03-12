@@ -73,7 +73,7 @@ cp .bashrc{,.bak}
 cd $dir
 cp .bashrc ~/
 copy_result .bashrc $?
-source ~/.bashrc
+#source ~/.bashrc
 cp -R percol-master/.percol.d ~/
 copy_result .percol.d $?
 #todo
