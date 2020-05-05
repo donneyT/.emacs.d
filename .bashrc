@@ -20,6 +20,8 @@ alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr 
 alias histg="history | grep"
 alias ..='cd ..'
 alias ...='cd ../..'
+#alias hostlist='_hostlist(){ cat ~/.ssh/config | grep "Host";};_hostlist'
+alias sshlist="cat ~/.ssh/config | grep \"Host\""
 
 #System info
 alias cmount="mount | column -t"
